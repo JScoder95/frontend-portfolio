@@ -109,8 +109,8 @@ export default function InteractiveSphere() {
         // Apply influence if mouse is over the canvas
         if (isMouseOverRef.current && distance < 100) {
           const influence = 100 / distance;
-          point.vx += (dx / distance) * influence * 0.05;
-          point.vy += (dy / distance) * influence * 0.05;
+          point.vx += (dx / distance) * influence * 0.5;
+          point.vy += (dy / distance) * influence * 0.5;
         }
 
         // Update positions
@@ -119,9 +119,9 @@ export default function InteractiveSphere() {
         point.z += point.vz;
 
         // Slow down over time
-        point.vx *= 0.98;
-        point.vy *= 0.98;
-        point.vz *= 0.98;
+        point.vx *= 0.76;
+        point.vy *= 0.76;
+        point.vz *= 0.76;
       });
     };
 

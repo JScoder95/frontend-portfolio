@@ -1,0 +1,9 @@
+
+node_modules
+.next
+/.next
+.next/cache/webpack/server-development/0.pack.gz
+.next/cache/webpack/server-development/11.pack.gz
+.next/cache/webpack/server-development/2.pack.gz
+.next/cache/webpack/server-development/index.pack.gz
+.next/cache/webpack/server-development/index.pack.gz.old

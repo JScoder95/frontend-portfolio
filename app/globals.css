@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 277 86% 50%; /* #9B15EB */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 296 86% 50%; /* #E115EB */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 277 86% 50%; /* #9B15EB */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 277 86% 50%; /* #9B15EB */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 296 86% 50%; /* #E115EB */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 277 86% 50%; /* #9B15EB */
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-poppins font-bold;
+  }
+
+  p,
+  span,
+  a,
+  li {
+    @apply font-inter;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center relative;
+  }
+
+  .section-title::after {
+    content: "";
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary rounded-full mt-2;
+  }
+
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #9b15eb, #e115eb);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .nav-link {
+    @apply relative px-3 py-2 text-sm font-medium transition-colors;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .code-text {
+    font-family: "Courier New", monospace;
+    @apply text-xs leading-relaxed;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float-blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(5%, 5%) scale(1.05);
+  }
+  50% {
+    transform: translate(0, 10%) scale(0.95);
+  }
+  75% {
+    transform: translate(-5%, 5%) scale(1.05);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/70 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+
+/* Code animation */
+.code-container {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.code-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  animation: code-flow 20s linear infinite;
+  transform: translateY(0);
+}
+
+.experience-card {
+  @apply relative p-6 rounded-lg transition-all duration-300 hover:shadow-lg;
+  @apply border border-border bg-card text-card-foreground;
+}
+
+.experience-card::before {
+  content: "";
+  @apply absolute top-0 left-0 w-1 h-full bg-primary rounded-l-lg;
+}
+
+.experience-year {
+  @apply absolute -top-3 -left-3 px-3 py-1 rounded-full text-sm font-medium;
+  @apply bg-primary text-primary-foreground;
+}
+
+/* Add new classes for the animated background */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(45deg, rgba(155, 21, 235, 0.05), rgba(225, 21, 235, 0.05));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(155, 21, 235, 0.3);
+  top: 20%;
+  left: 10%;
+  animation: float-blob 20s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(225, 21, 235, 0.3);
+  top: 50%;
+  right: 15%;
+  animation: float-blob 25s ease-in-out infinite reverse;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: rgba(155, 21, 235, 0.2);
+  bottom: 10%;
+  left: 30%;
+  animation: float-blob 18s ease-in-out infinite;
+}
+

@@ -22,7 +22,7 @@ const experiences: Experience[] = [
   {
     company: "GLOBANT (Salesforce)",
     location: "Santiago, Chile",
-    position: "UX Engineer",
+    position: "Senior UX Engineer",
     period: "Dec. 2024 - Mar. 2025",
     year: "2024-2025",
     description: [
